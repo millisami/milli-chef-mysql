@@ -67,9 +67,7 @@ if platform?(%w{ redhat centos fedora suse scientific amazon })
 elsif platform?(%w{ debian })
   package "libmysql-ruby"
 else
-  gem_package "mysql" do
-    action :install
-  end
+  chef_gem "mysql"
 end
 
 if platform? 'windows'
