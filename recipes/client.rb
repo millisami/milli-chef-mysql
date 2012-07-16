@@ -56,10 +56,14 @@ else
   %w{mysql-client libmysqlclient-dev}
 end
 
+package "build-essential" do
+  action :nothing
+end.run_action(:install)
+
 mysql_packages.each do |mysql_pack|
   package mysql_pack do
-    action :install
-  end
+    action :nothing
+  end.run_action(:install)
 end
 
 if platform?(%w{ redhat centos fedora suse scientific amazon })
